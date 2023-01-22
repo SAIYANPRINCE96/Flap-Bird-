@@ -1,0 +1,24 @@
+
+import React from 'react';
+import { render } from 'react-dom';
+import { useState, useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+
+const FlappyBird = () => {
+  // Game Variables
+  const [gameOver, setGameOver] = useState(false);
+  const [score, setScore] = useState(0);
+  const [birdY, setBirdY] = useState(0);
+  const [pipeX, setPipeX] = useState(0);
+  const [pipeY, setPipeY] = useState(0);
+  const [pipe2X, setPipe2X] = useState(0);
+  const [pipe2Y, setPipe2Y] = useState(0);
+  const [gapHeight, setGapHeight] = useState(200);
+
+  // Animations
+  const controls = useAnimation();
+  const birdControls = useAnimation();
+
+  // Event Listeners
+  useEffect(() => {
+    document.addEventListener('keydown', flap);
